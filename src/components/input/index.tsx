@@ -1,16 +1,30 @@
-import { IInput } from "../../types/input-types";
-import { InputStyled, InputTopStyled, TopRequiredStyled, TopTextStyled } from "./styled";
+import { IInput } from '../../types/input-types';
+import {
+  InputStyled,
+  InputTopStyled,
+  TopRequiredStyled,
+  TopTextStyled,
+} from './styled';
 
-export const Input = ({ placeholder, required, title, name,  register }: IInput) => {
+export const Input = ({
+  placeholder,
+  required,
+  title,
+  name,
+  register,
+}: IInput) => {
   return (
     <div>
       <InputTopStyled>
         <TopTextStyled>{title}</TopTextStyled>
-        {
-          required && <TopRequiredStyled>*</TopRequiredStyled>
-        }
+        {required && <TopRequiredStyled>*</TopRequiredStyled>}
       </InputTopStyled>
-      <InputStyled {...register(name, {required: required})} name={name} placeholder={placeholder} required={required} />
+      <InputStyled
+        {...register(name, { required: required })}
+        name={name}
+        placeholder={placeholder}
+        required={required}
+      />
     </div>
   );
 };

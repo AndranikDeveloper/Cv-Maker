@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -8,16 +8,18 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import stepsSlice from "./stepSlice";
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import stepsSlice from './stepSlice';
+import contactsSlice from './contactsSlice';
 
 const rootReducer = combineReducers({
   stepsSlice,
+  contactsSlice,
 });
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
 };
 
@@ -32,7 +34,6 @@ export const store = configureStore({
       },
     });
   },
-  
 });
 
 export const persistor = persistStore(store);

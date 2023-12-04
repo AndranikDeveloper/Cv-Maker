@@ -1,17 +1,48 @@
-import { styled } from "styled-components";
-import { FaCamera } from "react-icons/fa6";
+import { styled } from 'styled-components';
+import { FaCamera } from 'react-icons/fa6';
+import { RxCross1 } from 'react-icons/rx';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 export const ContactsStyled = styled.div``;
 export const ContactsContentStyled = styled.div`
-  margin-top: 65px;
+  margin-top: 50px;
 `;
 export const ContactsContainerStyled = styled.div`
   padding: 0 24px;
+`;
+
+export const MovementButtonsBlockStyled = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+`;
+export const ButtonWrapperStyled = styled.button`
+  border: none;
+  background-color: transparent;
+`;
+export const ForwardIconStyled = styled(IoIosArrowForward)`
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+`;
+export const BackIconStyled = styled(IoIosArrowBack)`
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 `;
 export const LeftSideStyled = styled.div`
   width: 99px;
   background-color: #c7c7c7;
   border-radius: 10px;
+`;
+export const ChosenImageStyled = styled.img`
+  width: 100px;
+  height: 100px;
+`;
+export const DeleteImageStyled = styled(RxCross1)`
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 `;
 export const TopStyled = styled.div`
   display: flex;
@@ -20,7 +51,6 @@ export const TopStyled = styled.div`
 `;
 
 export const FilePickerStyled = styled.input`
-  /* display: none; */
   visibility: hidden;
 `;
 export const FileLabelStyled = styled.label`
@@ -77,7 +107,8 @@ export const DetailsStyled = styled.div`
 
 export const DetailsTextStyled = styled.span`
   color: #000;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;

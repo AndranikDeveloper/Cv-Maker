@@ -1,10 +1,11 @@
 import {
-  fisrtInputs,
+  createUser,
+  firstInputs,
   secondInputs,
   thirdInputs,
-} from "../../utils/contacts-services";
-import { Button } from "../button";
-import { Input } from "../input";
+} from '../../utils/contacts-services';
+import { Button } from '../button';
+import { Input } from '../input';
 import {
   MiddleInputsStyled,
   ContactsContainerStyled,
@@ -22,44 +23,67 @@ import {
   DetailsStyled,
   DetailsTextStyled,
   DetailsIconStyled,
-} from "./styled";
-import plusIcon from "../../assets/plus.svg";
-import { Steps } from "../steps";
-import { useForm } from "react-hook-form";
-import { IContactsInfo } from "../../types/input-types";
+  ChosenImageStyled,
+  DeleteImageStyled,
+  BackIconStyled,
+  ForwardIconStyled,
+  MovementButtonsBlockStyled,
+  ButtonWrapperStyled,
+} from './styled';
+import plusIcon from '../../assets/plus.svg';
+import { Steps } from '../steps';
+import { useContacts } from '../../hooks/contacts-hook';
 
 export const Contacts = () => {
-  const { register, handleSubmit, reset } = useForm<IContactsInfo>();
-
-  const mySubmit = (data: IContactsInfo) => {
-    console.log(data.photo[0]);
-    reset()
-  };
+  const { img, register, setImg, reset, handleSubmit, dispatch, navigate } =
+    useContacts();
 
   return (
     <div>
-      <form onSubmit={handleSubmit(mySubmit)}>
+      <form
+        onSubmit={handleSubmit((data) => createUser(dispatch, data, reset))}
+      >
         <ContactsContainerStyled>
+          <MovementButtonsBlockStyled>
+            <BackIconStyled onClick={() => navigate(-1)} />
+            <ButtonWrapperStyled
+              onSubmit={handleSubmit((data) =>
+                createUser(dispatch, data, reset)
+              )}
+            >
+              <ForwardIconStyled />
+            </ButtonWrapperStyled>
+          </MovementButtonsBlockStyled>
           <Steps />
           <ContactsContentStyled>
             <TopStyled>
-              <LeftSideStyled>
-                <FileLabelStyled htmlFor="photo">
-                  <LabelStyled>
-                    <LabelIconStyled />
-                    <LabelTextStyled>add photo</LabelTextStyled>
-                  </LabelStyled>
-                </FileLabelStyled>
-                <FilePickerStyled
-                  type="file"
-                  id="photo"
-                  {...register("photo", {required: true})}
-                  accept="image/png"
-                />
-              </LeftSideStyled>
+              {img ? (
+                <>
+                  <ChosenImageStyled src={img} />
+                  <DeleteImageStyled onClick={() => setImg('')} />
+                </>
+              ) : (
+                <LeftSideStyled>
+                  <FileLabelStyled htmlFor='photo'>
+                    <LabelStyled>
+                      <LabelIconStyled />
+                      <LabelTextStyled>add photo</LabelTextStyled>
+                    </LabelStyled>
+                  </FileLabelStyled>
+                  <FilePickerStyled
+                    type='file'
+                    id='photo'
+                    {...register('photo', { required: true })}
+                    onChange={(e) =>
+                      setImg(URL.createObjectURL(e.target.files![0]))
+                    }
+                    accept='image/png, image/svg, image/jpeg'
+                  />
+                </LeftSideStyled>
+              )}
 
               <TopButtonsStyled>
-                {fisrtInputs.map(({ placeholder, required, title, name }) => (
+                {firstInputs.map(({ placeholder, required, title, name }) => (
                   <Input
                     key={title}
                     placeholder={placeholder}
@@ -104,7 +128,7 @@ export const Contacts = () => {
           </DetailsStyled>
         </ContactsContainerStyled>
         <ButtonPositionStyled>
-          <Button type="submit" />
+          <Button type='submit' path='/work-experience' />
         </ButtonPositionStyled>
       </form>
     </div>
