@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 
+
+
 export const InputStyled = styled.input`
-  width: 100%;
   background-color: #C7C7C7;
   border: none;
   color: #7d7d7d;
@@ -13,6 +14,7 @@ export const InputStyled = styled.input`
   letter-spacing: -0.199px;
   padding: 10px;
   border-radius: 10px;
+  height: 45px;
 `;
 export const InputTopStyled = styled.div`
   display: flex;

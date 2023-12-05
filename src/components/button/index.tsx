@@ -1,17 +1,13 @@
-import { useContacts } from '../../hooks/contacts-hook';
-import { navigateTo } from '../../utils/main-services';
 import { ButtonArrowStyled, ButtonStyled } from './styled';
 
 interface Props extends Partial<HTMLButtonElement> {
-  path: string;
 }
 
-export const Button = ({ type, path }: Props) => {
-  const { navigate } = useContacts();
+export const Button = ({ type }: Props) => {
 
   return (
-    <div>
-      <ButtonStyled type={type} onClick={() => navigateTo(navigate, path)}>
+    <div style={{marginTop: "10px"}}>
+      <ButtonStyled type={type}>
         Next Step
         <ButtonArrowStyled />
       </ButtonStyled>

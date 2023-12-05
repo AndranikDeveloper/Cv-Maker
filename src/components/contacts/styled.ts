@@ -1,11 +1,16 @@
-import { styled } from 'styled-components';
-import { FaCamera } from 'react-icons/fa6';
-import { RxCross1 } from 'react-icons/rx';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { styled } from "styled-components";
+import { FaCamera } from "react-icons/fa6";
+import { RxCross1 } from "react-icons/rx";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export const ContactsStyled = styled.div``;
 export const ContactsContentStyled = styled.div`
   margin-top: 50px;
+  display: grid;
+  grid-template-columns: 99px repeat(2, 109px);
+grid-template-rows: repeat(6, 1fr);
+grid-column-gap: 11px;
+grid-row-gap: 11px;
 `;
 export const ContactsContainerStyled = styled.div`
   padding: 0 24px;
@@ -40,8 +45,8 @@ export const ChosenImageStyled = styled.img`
   height: 100px;
 `;
 export const DeleteImageStyled = styled(RxCross1)`
-  width: 30px;
-  height: 30px;
+  width: 10px;
+  height: 10px;
   cursor: pointer;
 `;
 export const TopStyled = styled.div`
@@ -107,8 +112,8 @@ export const DetailsStyled = styled.div`
 
 export const DetailsTextStyled = styled.span`
   color: #000;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;

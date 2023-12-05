@@ -1,29 +1,36 @@
-import { IInput } from '../../types/input-types';
+import { IInput } from "../../types/input-types";
+import { validateEmail } from "../../utils/contacts-services";
 import {
   InputStyled,
   InputTopStyled,
   TopRequiredStyled,
   TopTextStyled,
-} from './styled';
+} from "./styled";
 
 export const Input = ({
-  placeholder,
-  required,
-  title,
   name,
+  placeholder,
   register,
+  required,
+  type,
+  title,
+  styles
 }: IInput) => {
+  const value = validateEmail(name)
+
   return (
-    <div>
+    <div style={styles}>
       <InputTopStyled>
         <TopTextStyled>{title}</TopTextStyled>
         {required && <TopRequiredStyled>*</TopRequiredStyled>}
       </InputTopStyled>
       <InputStyled
-        {...register(name, { required: required })}
+        style={styles}
+        {...register!(name!, { required: required, ...value})}
         name={name}
         placeholder={placeholder}
         required={required}
+        type={type}
       />
     </div>
   );

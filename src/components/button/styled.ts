@@ -19,7 +19,7 @@ export const ButtonStyled = styled.button`
   gap: 30px;
   border: none;
   cursor: pointer;
-  margin-top: 20px;
+  
 `;
 export const ButtonArrowStyled = styled(IoIosArrowForward)`
   color: #ffffff;

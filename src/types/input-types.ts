@@ -1,12 +1,16 @@
 import { UseFormRegister } from 'react-hook-form';
 import { name } from './contacts-types';
+import { CSSProperties } from 'styled-components';
 
 export interface IInput {
+  type: string;
   title: string;
   required: boolean;
   placeholder: string;
   name: name;
   register: UseFormRegister<IContactsInfo>;
+  styles?: CSSProperties
+  validate?: (register: UseFormRegister<IContactsInfo>) => void
 }
 export interface IContactsInfo {
   firstName: string;
