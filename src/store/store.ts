@@ -12,10 +12,12 @@ import {
 import storage from 'redux-persist/lib/storage';
 import stepsSlice from './stepSlice';
 import contactsSlice from './contactsSlice';
+import workExperienceSlice from './workExperienceSlice';
 
 const rootReducer = combineReducers({
   stepsSlice,
   contactsSlice,
+  workExperienceSlice,
 });
 
 const persistConfig = {

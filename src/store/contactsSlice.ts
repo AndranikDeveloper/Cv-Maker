@@ -10,11 +10,11 @@ const contactsSlice = createSlice({
   name: 'contactsSlice',
   initialState,
   reducers: {
-    createCv(state, action: PayloadAction<IContactsInfo>) {
+    createContacts(state, action: PayloadAction<IContactsInfo>) {
       state.user = action.payload;
     },
   },
 });
 
 export default contactsSlice.reducer;
-export const { createCv } = contactsSlice.actions;
+export const { createContacts } = contactsSlice.actions;

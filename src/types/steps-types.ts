@@ -1,11 +1,13 @@
 export interface IStepsInitialState {
-    stepNumber: number
+  step: number;
 }
 export interface ISteps {
-    step: string;
-    idx: number
+  title: string;
+  count: number;
+  component: React.ReactNode;
+  path: string;
 }
 
 export interface IStepsStyledProps {
-    $isCurrent: boolean
+  $isCurrent: boolean;
 }

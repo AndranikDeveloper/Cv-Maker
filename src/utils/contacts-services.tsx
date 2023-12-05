@@ -1,123 +1,121 @@
-import { UseFormReset } from "react-hook-form";
-import { AppDispatch } from "../store/store";
-import { ContactsDataType, name } from "../types/contacts-types";
-import { IContactsInfo, IInput } from "../types/input-types";
-import { createCv } from "../store/contactsSlice";
-import { Input } from "../components/input/index";
-import { SelectFile } from "../components/select-file";
+import { UseFormReset } from 'react-hook-form';
+import { AppDispatch } from '../store/store';
+import { ContactsDataType, name } from '../types/contacts-types';
+import { IContactsInfo, IInput } from '../types/input-types';
+import { createContacts } from '../store/contactsSlice';
+import { Input } from '../components/input/index';
+import { SelectFile } from '../components/select-file';
+import { NavigateFunction } from 'react-router-dom';
 
-export function validateEmail(
-  name: name,
-) {
+export function validateEmail(name: name) {
   const validation =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (name === "email") {
-   return {pattern: {value: validation, message: 'Enter Right Email'}}
+  if (name === 'email') {
+    return { pattern: { value: validation, message: 'Enter Right Email' } };
   } else {
-    return {pattern: {value: /^(.|[\r\n])*$/s, message: ''}}
+    return { pattern: { value: /^(.|[\r\n])*$/s, message: '' } };
   }
 }
 
-
 export const contactsData: ContactsDataType[] = [
   {
-    name: "photo",
+    name: 'photo',
     component: (props: IInput) => <SelectFile {...props} />,
     required: false,
-    title: "select-file",
-    placeholder: "",
-    type: "file",
+    title: 'select-file',
+    placeholder: '',
+    type: 'file',
     styles: {
-      width: "99px",
-      height: "121px",
-      backgroundColor: "#C4C4C4",
-      borderRadius: "10px",
-      gridArea: "1 / 1 / 3 / 2",
+      width: '99px',
+      height: '121px',
+      backgroundColor: '#C4C4C4',
+      borderRadius: '10px',
+      gridArea: '1 / 1 / 3 / 2',
     },
   },
   {
-    type: "text",
-    title: "First Name",
+    type: 'text',
+    title: 'First Name',
     required: true,
-    placeholder: "Violet",
-    name: "firstName",
+    placeholder: 'Violet',
+    name: 'firstName',
     component: (props: IInput) => <Input {...props} />,
     styles: {
-      width: "218px",
-      gridArea: "1 / 2 / 2 / 4",
+      width: '218px',
+      gridArea: '1 / 2 / 2 / 4',
     },
   },
   {
-    type: "text",
-    title: "Surname",
+    type: 'text',
+    title: 'Surname',
     required: true,
-    placeholder: "Morrison",
-    name: "surname",
+    placeholder: 'Morrison',
+    name: 'surname',
     component: (props: IInput) => <Input {...props} />,
     styles: {
-      width: "218px",
-      gridArea: "2 / 2 / 3 / 4",
+      width: '218px',
+      gridArea: '2 / 2 / 3 / 4',
     },
   },
   {
-    type: "text",
-    title: "Email Address",
+    type: 'text',
+    title: 'Email Address',
     required: true,
-    placeholder: "name@example.com",
-    name: "email",
+    placeholder: 'name@example.com',
+    name: 'email',
     component: (props: IInput) => <Input {...props} />,
     styles: {
-      width: "328px",
-      gridArea: "3 / 1 / 4 / 4",
+      width: '328px',
+      gridArea: '3 / 1 / 4 / 4',
     },
   },
   {
-    type: "number",
-    title: "Phone Number",
+    type: 'number',
+    title: 'Phone Number',
     required: false,
-    placeholder: "+123456789",
-    name: "phoneNumber",
+    placeholder: '+123456789',
+    name: 'phoneNumber',
     component: (props: IInput) => <Input {...props} />,
     styles: {
-      width: "328px",
-      gridArea: "4 / 1 / 5 / 4",
+      width: '328px',
+      gridArea: '4 / 1 / 5 / 4',
     },
   },
   {
-    type: "text",
-    title: "Home Address",
+    type: 'text',
+    title: 'Home Address',
     required: false,
-    placeholder: "4586  McDonald Avenue",
-    name: "homeAddress",
+    placeholder: '4586  McDonald Avenue',
+    name: 'homeAddress',
     component: (props: IInput) => <Input {...props} />,
     styles: {
-      width: "328px",
-      gridArea: "5 / 1 / 6 / 4",
+      width: '328px',
+      gridArea: '5 / 1 / 6 / 4',
     },
   },
   {
-    type: "number",
-    title: "Zip Code",
+    type: 'number',
+    title: 'Zip Code',
     required: false,
-    placeholder: "34741",
-    name: "zipCode",
+    placeholder: '34741',
+    name: 'zipCode',
     component: (props: IInput) => <Input {...props} />,
     styles: {
-      width: "110px",
-      gridArea: "6 / 1 / 7 / 2",
+      width: '110px',
+      gridArea: '6 / 1 / 7 / 2',
     },
   },
   {
-    type: "text",
-    title: "City/Town",
+    type: 'text',
+    title: 'City/Town',
     required: false,
-    placeholder: " Kissimmee/FL",
-    name: "city",
+    placeholder: ' Kissimmee/FL',
+    name: 'city',
     component: (props: IInput) => <Input {...props} />,
     styles: {
-      width: "194px",
-      gridArea: " 6 / 2 / 7 / 4",
-      marginLeft: "20px",
+      width: '194px',
+      gridArea: ' 6 / 2 / 7 / 4',
+      marginLeft: '20px',
     },
   },
 ];
@@ -125,9 +123,13 @@ export const contactsData: ContactsDataType[] = [
 export function createUser(
   dispatch: AppDispatch,
   data: IContactsInfo,
-  reset: UseFormReset<IContactsInfo>
+  reset: UseFormReset<IContactsInfo>,
+  navigate: NavigateFunction,
+  path: string
 ) {
   console.log(data);
-  dispatch(createCv(data));
+  dispatch(createContacts(data));
   reset();
+  console.log(path);
+  navigate(path);
 }
