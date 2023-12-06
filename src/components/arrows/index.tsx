@@ -1,22 +1,21 @@
-import { useContacts } from '../../hooks/useContacts';
-import { createUser } from '../../utils/contacts-services';
 import {
   BackIconStyled,
   ButtonWrapperStyled,
   ForwardIconStyled,
   MovementButtonsBlockStyled,
 } from '../contacts/styled';
+import { useNavigate } from 'react-router-dom';
 
-export const Arrows = ({ path }: { path: string }) => {
-  const { dispatch, handleSubmit, reset, navigate } = useContacts();
+interface ArrowsProps {
+  path: string;
+}
+
+export const Arrows = ({ path }: ArrowsProps) => {
+  const navigate = useNavigate();
   return (
     <MovementButtonsBlockStyled>
       <BackIconStyled onClick={() => navigate(-1)} />
-      <ButtonWrapperStyled
-        onSubmit={handleSubmit((data) =>
-          createUser(dispatch, data, reset, navigate, path)
-        )}
-      >
+      <ButtonWrapperStyled onSubmit={() => navigate(path)}>
         <ForwardIconStyled />
       </ButtonWrapperStyled>
     </MovementButtonsBlockStyled>

@@ -1,6 +1,6 @@
 import { UseFormReset } from 'react-hook-form';
 import { AppDispatch } from '../store/store';
-import { ContactsDataType, name } from '../types/contacts-types';
+import { DataType, name } from '../types/contacts-types';
 import { IContactsInfo, IInput } from '../types/input-types';
 import { createContacts } from '../store/contactsSlice';
 import { Input } from '../components/contacts-input/index';
@@ -17,7 +17,7 @@ export function validateEmail(name: name) {
   }
 }
 
-export const contactsData: ContactsDataType[] = [
+export const contactsData: DataType[] = [
   {
     name: 'photo',
     component: (props: IInput) => <SelectFile {...props} />,

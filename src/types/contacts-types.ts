@@ -1,5 +1,5 @@
-import { CSSProperties } from "styled-components";
-import { IInput } from "./input-types";
+import { CSSProperties } from 'styled-components';
+import { IInput } from './input-types';
 
 export interface IContacts {
   firstName: string;
@@ -16,25 +16,12 @@ export interface IContactsInitialState {
   user: IContacts | null;
 }
 
-export type name =
-  | "firstName"
-  | "surname"
-  | "email"
-  | "phoneNumber"
-  | "homeAddress"
-  | "zipCode"
-  | "city"
-  | "photo"
-
-
-export interface ContactsDataType {
+export interface DataType {
   type: string;
   title: string;
-  required: boolean;
-  placeholder: string;
-  name: name;
+  required?: boolean;
+  placeholder?: string;
+  name: string;
   component: (props: IInput) => React.ReactNode;
   styles: CSSProperties;
 }
-
-export type PartialContactsDataType = Partial<ContactsDataType>;

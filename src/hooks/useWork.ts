@@ -1,11 +1,13 @@
-import { useForm } from "react-hook-form";
-import { IUserWorks } from "../types/work-experience-types";
+import { useForm } from 'react-hook-form';
+import { IUserWorks } from '../types/work-experience-types';
+import { useAppDispatch } from './store-hooks';
 
 export const useWork = () => {
   const {
     register: workRegister,
     handleSubmit: submitWorkInfo,
-    control,
+    reset: resetWorkInfo,
   } = useForm<IUserWorks>();
-  return { workRegister, submitWorkInfo, control };
+  const dispatch = useAppDispatch();
+  return { workRegister, submitWorkInfo, dispatch, resetWorkInfo };
 };
