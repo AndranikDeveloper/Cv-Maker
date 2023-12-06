@@ -1,4 +1,4 @@
-import { useContacts } from '../../hooks/contacts-hook';
+import { useContacts } from '../../hooks/useContacts';
 import { IInput } from '../../types/input-types';
 import {
   DeleteImageStyled,

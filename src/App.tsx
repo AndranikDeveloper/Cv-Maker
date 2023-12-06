@@ -2,7 +2,7 @@ import './App.css';
 import { Contacts } from './components/contacts';
 import { Main } from './components/main';
 import { Routes, Route } from 'react-router-dom';
-import { WorkExperience } from './components/work-experiance';
+import { WorkExperience } from './components/work-experience';
 
 function App() {
   return (

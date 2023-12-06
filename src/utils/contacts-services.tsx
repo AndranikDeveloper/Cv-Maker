@@ -3,8 +3,8 @@ import { AppDispatch } from '../store/store';
 import { ContactsDataType, name } from '../types/contacts-types';
 import { IContactsInfo, IInput } from '../types/input-types';
 import { createContacts } from '../store/contactsSlice';
-import { Input } from '../components/input/index';
-import { SelectFile } from '../components/select-file';
+import { Input } from '../components/contacts-input/index';
+import { SelectFile } from '../components/select-contact-img';
 import { NavigateFunction } from 'react-router-dom';
 
 export function validateEmail(name: name) {

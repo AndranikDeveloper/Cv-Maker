@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useContacts } from '../../hooks/contacts-hook';
+import { useContacts } from '../../hooks/useContacts';
 import { createUser } from '../../utils/contacts-services';
 import { ButtonWrapperStyled } from '../contacts/styled';
 import {
@@ -11,10 +11,10 @@ import {
 } from './styled';
 import { useAppSelector } from '../../hooks/store-hooks';
 import { Contacts } from '../contacts';
-import { WorkExperience } from '../work-experiance';
+import { WorkExperience } from '../work-experience';
 import { Education } from '../education';
 import { Information } from '../other-information';
-import { SaveCv } from '../../final-cv';
+import { SaveCv } from '../../save-cv';
 
 export const Steps = () => {
   const [path, setPath] = useState('');

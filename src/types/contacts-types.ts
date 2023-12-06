@@ -26,6 +26,7 @@ export type name =
   | "city"
   | "photo"
 
+
 export interface ContactsDataType {
   type: string;
   title: string;
@@ -36,4 +37,4 @@ export interface ContactsDataType {
   styles: CSSProperties;
 }
 
-export type PartialContactsDataType = Partial<ContactsDataType>
+export type PartialContactsDataType = Partial<ContactsDataType>;

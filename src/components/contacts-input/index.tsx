@@ -15,7 +15,7 @@ export const Input = ({
   type,
   title,
   styles
-}: IInput) => {
+}: IInput ) => {
   const value = validateEmail(name)
 
   return (
@@ -26,7 +26,7 @@ export const Input = ({
       </InputTopStyled>
       <InputStyled
         style={styles}
-        {...register!(name!, { required: required, ...value})}
+        {...register!(name, { required: required, ...value})}
         name={name}
         placeholder={placeholder}
         required={required}

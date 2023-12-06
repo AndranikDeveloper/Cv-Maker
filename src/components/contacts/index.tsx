@@ -10,7 +10,7 @@ import {
 } from './styled';
 import plusIcon from '../../assets/plus.svg';
 import { Steps } from '../steps';
-import { useContacts } from '../../hooks/contacts-hook';
+import { useContacts } from '../../hooks/useContacts';
 import { Arrows } from '../arrows';
 
 export const Contacts = () => {
