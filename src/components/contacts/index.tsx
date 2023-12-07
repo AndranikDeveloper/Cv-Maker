@@ -10,18 +10,19 @@ import {
 } from './styled';
 import plusIcon from '../../assets/plus.svg';
 import { Steps } from '../steps';
-import { useContacts } from '../../hooks/useContacts';
 import { Arrows } from '../arrows';
+import { createContacts } from '../../store/contactsSlice';
+import { usePersonal } from '../../hooks/useContacts';
 
 export const Contacts = () => {
-  const { reset, handleSubmit, dispatch, navigate, register } = useContacts();
+  const { reset, handleSubmit, dispatch, navigate, register } = usePersonal();
   const path = '/work-experience';
 
   return (
     <div>
       <form
         onSubmit={handleSubmit((data) =>
-          createUser(dispatch, data, reset, navigate, path)
+          createUser(dispatch, data, reset, navigate, path, createContacts)
         )}
       >
         <ContactsContainerStyled>

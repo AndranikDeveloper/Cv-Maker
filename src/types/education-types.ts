@@ -12,27 +12,20 @@ export interface IEducation {
   description: string;
 }
 
-export type IEducationNames =
-  | 'school'
-  | 'startDate'
-  | 'startYear'
-  | 'endDate'
-  | 'endYear'
-  | 'subject'
-  | 'degree'
-  | 'description';
 
 export interface IEducationProps {
-  name: IEducationNames;
+  name: string;
   title: string;
   placeholder: string;
-  educationRegister: UseFormRegister<IEducation>;
+  register: UseFormRegister<Record<string, string>>;
   styles: CSSProperties;
 }
 export interface IEducationData {
+  required?: boolean;
+  type?: string
   title: string;
-  placeholder?: string;
-  name: IEducationNames;
+  placeholder: string;
+  name: string;
   component: (props: IEducationProps) => React.ReactNode;
   styles: CSSProperties;
 }

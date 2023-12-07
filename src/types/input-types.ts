@@ -7,10 +7,11 @@ export interface IInput {
   required?: boolean;
   placeholder?: string;
   name: string;
-  register: UseFormRegister<IContactsInfo>;
+  register: UseFormRegister<Record<string, string>>;
   styles?: CSSProperties;
-  validate?: (register: UseFormRegister<IContactsInfo>) => void;
+  validate?: (register: UseFormRegister<Record<string, string>>) => void;
 }
+
 export interface IContactsInfo {
   firstName: string;
   surname: string;
@@ -22,6 +23,4 @@ export interface IContactsInfo {
   photo: FileList;
 }
 
-export interface IInputProps {
-  inputData: IInput[];
-}
+

@@ -1,11 +1,10 @@
 import { useForm } from 'react-hook-form';
-import { IContactsInfo } from '../types/input-types';
 import { useState } from 'react';
 import { useAppDispatch } from './store-hooks';
 import { useNavigate } from 'react-router-dom';
 
 
-export const useContacts = () => {
+export const usePersonal = () => {
   const [img, setImg] = useState<string | null>(null);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ export const useContacts = () => {
     reset,
     formState: { errors },
     getValues,
-  } = useForm<IContactsInfo>();
+  } = useForm<Record<string, string>>();
 
 
   return {

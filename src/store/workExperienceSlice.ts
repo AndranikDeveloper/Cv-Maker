@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IWorkExperienceInitialState } from '../types/work-experience-types';
+import { IUserInitialState } from '../types/contacts-types';
 
-const initialState: IWorkExperienceInitialState = {
-  userWorks: null,
+const initialState: IUserInitialState = {
+  user: null,
 };
 
 const workExperience = createSlice({
@@ -10,7 +10,7 @@ const workExperience = createSlice({
   initialState,
   reducers: {
     createWorkExperience(state, action) {
-      state.userWorks = action.payload;
+      state.user = action.payload;
     },
   },
 });

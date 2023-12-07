@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IContactsInitialState } from '../types/contacts-types';
-import { IContactsInfo } from '../types/input-types';
+import { IUserInitialState } from '../types/contacts-types';
 
-const initialState: IContactsInitialState = {
+const initialState: IUserInitialState = {
   user: null,
 };
 
@@ -10,7 +9,7 @@ const contactsSlice = createSlice({
   name: 'contactsSlice',
   initialState,
   reducers: {
-    createContacts(state, action: PayloadAction<IContactsInfo>) {
+    createContacts(state, action: PayloadAction<Record<string, string>>) {
       state.user = action.payload;
     },
   },

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { CSSProperties, styled } from "styled-components";
 import { FaCamera } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -8,9 +8,9 @@ export const ContactsContentStyled = styled.div`
   margin-top: 50px;
   display: grid;
   grid-template-columns: 99px repeat(2, 109px);
-grid-template-rows: repeat(6, 1fr);
-grid-column-gap: 11px;
-grid-row-gap: 11px;
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 11px;
+  grid-row-gap: 11px;
 `;
 export const ContactsContainerStyled = styled.div`
   padding: 0 24px;
@@ -62,6 +62,8 @@ export const FileLabelStyled = styled.label`
   cursor: pointer;
   height: 100%;
 `;
+
+export const FileContentStyled = styled.div``;
 export const LabelStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -128,3 +130,16 @@ export const ButtonPositionStyled = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+interface Props {
+  img: string
+  styles: CSSProperties
+}
+
+export const ImageWrapperStyled = styled.div<Props>`
+  background-image: ${({ img }) => `url(${img})`};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  ${({styles}) => styles && {...styles}}
+`

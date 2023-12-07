@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useContacts } from '../../hooks/useContacts';
 import { createUser } from '../../utils/contacts-services';
 import { ButtonWrapperStyled } from '../contacts/styled';
 import {
@@ -15,11 +14,12 @@ import { WorkExperience } from '../work-experience';
 import { Education } from '../education';
 import { Information } from '../other-information';
 import { SaveCv } from '../../save-cv';
+import { usePersonal } from '../../hooks/useContacts';
 
 export const Steps = () => {
   const [path, setPath] = useState('');
   const step = useAppSelector((state) => state.stepsSlice.step);
-  const { handleSubmit, dispatch, reset, navigate } = useContacts();
+  const { handleSubmit, dispatch, reset, navigate } = usePersonal();
 
   const steps = [
     {

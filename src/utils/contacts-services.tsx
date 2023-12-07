@@ -1,13 +1,12 @@
 import { UseFormReset } from 'react-hook-form';
 import { AppDispatch } from '../store/store';
-import { DataType, name } from '../types/contacts-types';
-import { IContactsInfo, IInput } from '../types/input-types';
-import { createContacts } from '../store/contactsSlice';
+import { DataType } from '../types/contacts-types';
+import {  IInput } from '../types/input-types';
 import { Input } from '../components/contacts-input/index';
 import { SelectFile } from '../components/select-contact-img';
 import { NavigateFunction } from 'react-router-dom';
 
-export function validateEmail(name: name) {
+export function validateEmail(name: string) {
   const validation =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (name === 'email') {
@@ -24,7 +23,7 @@ export const contactsData: DataType[] = [
     required: false,
     title: 'select-file',
     placeholder: '',
-    type: 'file',
+    type: 'text',
     styles: {
       width: '99px',
       height: '121px',
@@ -70,7 +69,7 @@ export const contactsData: DataType[] = [
     },
   },
   {
-    type: 'number',
+    type: 'text',
     title: 'Phone Number',
     required: false,
     placeholder: '+123456789',
@@ -94,7 +93,7 @@ export const contactsData: DataType[] = [
     },
   },
   {
-    type: 'number',
+    type: 'text',
     title: 'Zip Code',
     required: false,
     placeholder: '34741',
@@ -122,14 +121,14 @@ export const contactsData: DataType[] = [
 
 export function createUser(
   dispatch: AppDispatch,
-  data: IContactsInfo,
-  reset: UseFormReset<IContactsInfo>,
+  data: Record<string, string>,
+  reset: UseFormReset<Record<string, string>>,
   navigate: NavigateFunction,
-  path: string
+  path: string,
+  store?: (val: Record<string, string>) => void
 ) {
   console.log(data);
-  dispatch(createContacts(data));
+  dispatch(store!(data)!);
   reset();
-  console.log(path);
   navigate(path);
 }

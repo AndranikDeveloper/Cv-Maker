@@ -12,12 +12,12 @@ export interface IContacts {
   photo: FileList;
 }
 
-export interface IContactsInitialState {
-  user: IContacts | null;
+export interface IUserInitialState {
+  user: Record<string, string> | null;
 }
 
 export interface DataType {
-  type: string;
+  type?: string;
   title: string;
   required?: boolean;
   placeholder?: string;

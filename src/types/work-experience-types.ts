@@ -24,17 +24,21 @@ export interface IUserWorks {
 export type IWorkNames = "employer" | "startDate" | "startYear" | "endDate"  | "endYear" |  "jobTitle" | "location" | "description"
 
 export interface IWorkComponentsProps {
+  type?: string;
+  required?: boolean
   title: string;
   placeholder?: string;
-  name: IWorkNames;
+  name: string;
   styles: CSSProperties;
-  workRegister: UseFormRegister<IUserWorks>;
+  register?: UseFormRegister<Record<string, string>>;
 }
 
 export interface IWorkData {
+  type?: string;
+  required?: boolean
   title: string;
-  placeholder?: string;
-  name: IWorkNames;
+  placeholder: string;
+  name: string;
   styles: CSSProperties;
   component: (props: IWorkComponentsProps) => React.ReactNode
 }

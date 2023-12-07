@@ -1,6 +1,6 @@
-import { useWork } from '../../hooks/useWork';
+import { usePersonal } from '../../hooks/useContacts';
+import { createUser } from '../../utils/contacts-services';
 import {
-  handleSubmitWork,
   workData,
 } from '../../utils/work-experience-services';
 import { Arrows } from '../arrows';
@@ -8,14 +8,16 @@ import { Button } from '../button';
 import { ButtonPositionStyled } from '../contacts/styled';
 import { Steps } from '../steps';
 import { WorkContainerStyled, WorkContentStyled, WorkStyled } from './styled';
+import { createWorkExperience } from '../../store/workExperienceSlice';
 
 export const WorkExperience = () => {
-  const { workRegister, submitWorkInfo, dispatch, resetWorkInfo } = useWork();
+  const { register, handleSubmit, dispatch, reset, navigate } = usePersonal();
+  const path = '/education'
   return (
     <WorkStyled>
       <form
-        onSubmit={submitWorkInfo((data) =>
-          handleSubmitWork(data, dispatch, resetWorkInfo)
+        onSubmit={handleSubmit((data) =>
+          createUser(dispatch, data, reset, navigate, path, createWorkExperience)
         )}
       >
         <WorkContainerStyled>
@@ -35,7 +37,7 @@ export const WorkExperience = () => {
             </h3>
             <WorkContentStyled>
               {workData.map(({ component, ...props }) =>
-                component({ workRegister, ...props })
+                component({ register, ...props })
               )}
             </WorkContentStyled>
           </>

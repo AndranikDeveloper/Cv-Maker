@@ -1,7 +1,7 @@
 import { IWorkComponentsProps } from "../../types/work-experience-types"
 import { InputStyled, InputTopStyled, TopTextStyled } from "../contacts-input/styled"
 
-export const WorkInput = ({name, workRegister, title, placeholder, styles}: IWorkComponentsProps) => {
+export const WorkInput = ({name, register, title, placeholder, styles}: IWorkComponentsProps) => {
   return (
     <div style={styles}>
       <InputTopStyled>
@@ -10,7 +10,7 @@ export const WorkInput = ({name, workRegister, title, placeholder, styles}: IWor
       </InputTopStyled>
       <InputStyled
         style={styles}
-        {...workRegister!(name)}
+        {...register!(name)}
         name={name}
         placeholder={placeholder}
         type='text'

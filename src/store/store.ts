@@ -13,11 +13,15 @@ import storage from 'redux-persist/lib/storage';
 import stepsSlice from './stepSlice';
 import contactsSlice from './contactsSlice';
 import workExperienceSlice from './workExperienceSlice';
+import educationSlice from './educationSlice';
+import informationSlice from './informationSlice';
 
 const rootReducer = combineReducers({
   stepsSlice,
   contactsSlice,
   workExperienceSlice,
+  educationSlice,
+  informationSlice
 });
 
 const persistConfig = {

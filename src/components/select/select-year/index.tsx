@@ -3,13 +3,13 @@ import { years } from '../../../utils/select-services';
 import { SelectOptionStyled, SelectTagStyled } from '../styled';
 
 export const SelectYear = ({
-  workRegister,
+  register,
   name,
   styles,
 }: IWorkComponentsProps) => {
   return (
     <div>
-      <SelectTagStyled style={styles} {...workRegister(name)}>
+      <SelectTagStyled style={styles} {...register(name)}>
         {years.map((year) => (
           <SelectOptionStyled key={year}>{year.toString()}</SelectOptionStyled>
         ))}

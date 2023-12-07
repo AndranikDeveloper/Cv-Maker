@@ -5,13 +5,13 @@ export const TextArea = ({
   name,
   styles,
   placeholder,
-  workRegister,
+  register,
 }: IWorkComponentsProps) => {
   return (
     <>
       <TextAreaStyled
         placeholder={placeholder}
-        {...workRegister(name)}
+        {...register!(name)}
         style={styles}
       />
     </>
