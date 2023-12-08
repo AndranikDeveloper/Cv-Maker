@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IUserInitialState } from "../types/contacts-types";
+import { IUserInitialState } from "../types/store-types";
 
 const initialState: IUserInitialState = {
   user: null,

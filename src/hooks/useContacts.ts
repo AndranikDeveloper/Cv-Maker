@@ -13,7 +13,7 @@ export const usePersonal = () => {
     handleSubmit,
     reset,
     formState: { errors },
-    getValues,
+    control
   } = useForm<Record<string, string>>();
 
 
@@ -26,6 +26,6 @@ export const usePersonal = () => {
     dispatch,
     navigate,
     errors,
-    getValues,
+    control
   };
 };

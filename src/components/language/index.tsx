@@ -1,4 +1,4 @@
-import { IInformationProps } from "../../types/information-types";
+import { UseFormRegister } from "react-hook-form";
 import { languageLevels } from "../../utils/language-services";
 import {
   LanguagaContentStyled,
@@ -9,25 +9,26 @@ import {
 } from "./styled";
 
 export const Language = ({
-  name,
   register,
-  sectionName,
-}: IInformationProps) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}: {register: UseFormRegister<any>}) => {
   return (
     <LanguageStyled>
       <LanguagaContentStyled>
         <div>
-          <div>{sectionName}</div>
-          <LanguageInputStyled />
+          <div>Languges</div>
+            <LanguageInputStyled {...register!('language')}/>
         </div>
-        <>
+       
+        <div>
         <div>Level</div>
-          <LanguageSelectStyled {...register!(name)}>
+
+          <LanguageSelectStyled {...register!('level')}>
             {languageLevels.map((level) => (
               <LanguageOptionStyled key={level}>{level}</LanguageOptionStyled>
             ))}
           </LanguageSelectStyled>
-        </>
+        </div>
       </LanguagaContentStyled>
     </LanguageStyled>
   );

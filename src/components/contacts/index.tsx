@@ -17,6 +17,8 @@ import { usePersonal } from '../../hooks/useContacts';
 export const Contacts = () => {
   const { reset, handleSubmit, dispatch, navigate, register } = usePersonal();
   const path = '/work-experience';
+  console.log('asdas');
+  
 
   return (
     <div>

@@ -22,16 +22,6 @@ export interface IUserWorks {
   description: string;
 }
 
-export type IWorkNames =
-  | 'employer'
-  | 'startDate'
-  | 'startYear'
-  | 'endDate'
-  | 'endYear'
-  | 'jobTitle'
-  | 'location'
-  | 'description';
-
 export interface IWorkComponentsProps {
   type?: string;
   required?: boolean;

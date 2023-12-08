@@ -1,28 +1,43 @@
-import { useForm } from 'react-hook-form';
-import { additionalInfo } from '../../utils/information-services';
+import { additionalInfo } from "../../utils/information-services";
+import {
+  InformationContainerStyled,
+  InformationContentStyled,
+  InformationStyled,
+} from "./styled";
+import { Arrows } from "../arrows";
+import { Steps } from "../steps";
+import { usePersonal } from "../../hooks/useContacts";
+import { createUser } from "../../utils/contacts-services";
+import { createInformation } from "../../store/informationSlice";
+import { ButtonPositionStyled } from "../contacts/styled";
+import { Button } from "../button";
 
 export const Information = () => {
-  const { register } = useForm({
-    defaultValues: {
-      referenceInfo: [],
-    },
-  });
+  const { dispatch, handleSubmit, navigate, reset, register } = usePersonal();
+  const path = "/save";
 
   return (
-    <div>
-      <div>
-        {additionalInfo.map(
-          ({ component, name, styles, placeholder, title, sectionName }) =>
-            component({
-              register,
-              name,
-              styles,
-              placeholder,
-              title,
-              sectionName,
-            })
+    <InformationStyled>
+      <form
+        onSubmit={handleSubmit((data) =>
+          createUser(dispatch, data, reset, navigate, path, createInformation)
         )}
-      </div>
-    </div>
+      >
+        <InformationContainerStyled>
+          <div>
+            <Arrows path={path} />
+            <Steps />
+          </div>
+          <InformationContentStyled>
+            {additionalInfo.map(({ component, ...props }) =>
+              component({ register, ...props })
+            )}
+            <ButtonPositionStyled>
+              <Button type="submit" />
+            </ButtonPositionStyled>
+          </InformationContentStyled>
+        </InformationContainerStyled>
+      </form>
+    </InformationStyled>
   );
 };

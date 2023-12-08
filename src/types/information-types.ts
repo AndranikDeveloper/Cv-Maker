@@ -4,7 +4,7 @@ export interface IInformationProps {
   title: string;
   placeholder?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>;
+  register: UseFormRegister<any>;
   sectionName: string;
   name: string;
   styles: React.CSSProperties;

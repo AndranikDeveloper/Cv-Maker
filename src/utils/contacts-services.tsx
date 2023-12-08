@@ -127,7 +127,8 @@ export function createUser(
   path: string,
   store?: (val: Record<string, string>) => void
 ) {
-  console.log(data);
+  console.log('asdas');
+  
   dispatch(store!(data)!);
   reset();
   navigate(path);
