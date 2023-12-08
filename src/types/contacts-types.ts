@@ -12,16 +12,16 @@ export interface IContacts {
   photo: FileList;
 }
 
-export interface IUserInitialState {
-  user: Record<string, string> | null;
-}
-
 export interface DataType {
-  type?: string;
+  type: string;
   title: string;
   required?: boolean;
   placeholder?: string;
   name: string;
   component: (props: IInput) => React.ReactNode;
   styles: CSSProperties;
+}
+
+export interface IContactsInitialState {
+  user: IContacts | null;
 }

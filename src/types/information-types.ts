@@ -1,21 +1,20 @@
-import { UseFormRegister } from "react-hook-form";
-import { IWorkComponentsProps } from "./work-experience-types";
+import { UseFormRegister } from 'react-hook-form';
 
 export interface IInformationProps {
-    title: string;
-    placeholder?: string;
-    register?: UseFormRegister<{ referenceInfo: never[]; }>;
-    sectionName: string;
-    name: string
-    styles: React.CSSProperties
+  title: string;
+  placeholder?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  register?: UseFormRegister<any>;
+  sectionName: string;
+  name: string;
+  styles: React.CSSProperties;
 }
 
-
 export interface IInformationData {
-    name: string;
-    title?: string;
-    placeholder?: string;
-    component?: (props: IInformationProps | IWorkComponentsProps) => React.ReactNode
-    sectionName?: string;
-    styles: React.CSSProperties
+  name: string;
+  title: string;
+  placeholder: string;
+  component: (props: IInformationProps) => React.ReactNode;
+  sectionName: string;
+  styles: React.CSSProperties;
 }

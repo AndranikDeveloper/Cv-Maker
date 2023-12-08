@@ -1,10 +1,28 @@
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
+import { additionalInfo } from '../../utils/information-services';
 
 export const Information = () => {
   const { register } = useForm({
     defaultValues: {
-      referenceInfo: []
+      referenceInfo: [],
     },
   });
-  return <div>index</div>;
+
+  return (
+    <div>
+      <div>
+        {additionalInfo.map(
+          ({ component, name, styles, placeholder, title, sectionName }) =>
+            component({
+              register,
+              name,
+              styles,
+              placeholder,
+              title,
+              sectionName,
+            })
+        )}
+      </div>
+    </div>
+  );
 };

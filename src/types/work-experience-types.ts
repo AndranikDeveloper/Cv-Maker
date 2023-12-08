@@ -1,5 +1,6 @@
-import { UseFormRegister } from "react-hook-form";
-import { CSSProperties } from "styled-components";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { UseFormRegister } from 'react-hook-form';
+import { CSSProperties } from 'styled-components';
 
 export interface IWorkExperienceInitialState {
   userWorks: IUserWorks | null;
@@ -7,38 +8,46 @@ export interface IWorkExperienceInitialState {
 
 export interface IDates {
   month: string;
-  year: number
+  year: number;
 }
 
 export interface IUserWorks {
   employer: string;
   startDate: string;
   endDate: string;
-  startYear: string
-  endYear: string
+  startYear: string;
+  endYear: string;
   jobTitle: string;
   location: string;
   description: string;
 }
 
-export type IWorkNames = "employer" | "startDate" | "startYear" | "endDate"  | "endYear" |  "jobTitle" | "location" | "description"
+export type IWorkNames =
+  | 'employer'
+  | 'startDate'
+  | 'startYear'
+  | 'endDate'
+  | 'endYear'
+  | 'jobTitle'
+  | 'location'
+  | 'description';
 
 export interface IWorkComponentsProps {
   type?: string;
-  required?: boolean
+  required?: boolean;
   title: string;
   placeholder?: string;
   name: string;
   styles: CSSProperties;
-  register?: UseFormRegister<Record<string, string>>;
+  register?: UseFormRegister<any>;
 }
 
 export interface IWorkData {
   type?: string;
-  required?: boolean
+  required?: boolean;
   title: string;
   placeholder: string;
   name: string;
   styles: CSSProperties;
-  component: (props: IWorkComponentsProps) => React.ReactNode
+  component: (props: IWorkComponentsProps) => React.ReactNode;
 }
