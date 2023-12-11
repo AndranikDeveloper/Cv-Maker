@@ -2,6 +2,11 @@ import { DataType } from '../types/contacts-types';
 import { IInput } from '../types/input-types';
 import { Input } from '../components/contacts-input/index';
 import { SelectFile } from '../components/select-contact-img';
+import { createUser } from './create-user-services';
+import { AppDispatch } from '../store/store';
+import { UseFormReset } from 'react-hook-form';
+import { NavigateFunction } from 'react-router-dom';
+import { setPath } from '../store/navigatePathSlice';
 
 export function validateEmail(name: string) {
   const validation =
@@ -111,7 +116,24 @@ export const contactsData: DataType[] = [
     styles: {
       width: '194px',
       gridArea: ' 6 / 2 / 7 / 4',
-      marginLeft: '12px'
+      marginLeft: '12px',
     },
   },
 ];
+
+export function onSubmitLogic(
+  data: Record<string, string>,
+  img: string,
+  dispatch: AppDispatch,
+  reset: UseFormReset<Record<string, string>>,
+  navigate: NavigateFunction,
+  path: string,
+  storeFunc: (val: Record<string, string>) => void
+) {
+  const newData = {
+    photo: img,
+    ...data,
+  };
+  dispatch(setPath(path));
+  createUser(dispatch, newData, reset, navigate, path, storeFunc);
+}

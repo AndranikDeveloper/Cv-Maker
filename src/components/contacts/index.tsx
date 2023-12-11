@@ -1,5 +1,4 @@
-import { contactsData } from '../../utils/contacts-services';
-import { createUser } from '../../utils/create-user-services';
+import { contactsData, onSubmitLogic } from '../../utils/contacts-services';
 import { Button } from '../button';
 import {
   ContactsContainerStyled,
@@ -17,24 +16,24 @@ import { createUserData } from '../../store/userSlice';
 import React, { useState } from 'react';
 
 export const Contacts = () => {
-  const { reset, handleSubmit, dispatch, navigate, register, navigatePath } = usePersonal();
-  const [img, setImg] = useState('')
+  const [img, setImg] = useState('');
+  const { reset, handleSubmit, dispatch, navigate, register } = usePersonal();
   const path = '/work-experience';
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function onSubmitLogic(data: any) {
-    const newData = {
-      ...data,
-      photo: img
-    }
-    
-    createUser(dispatch, newData, reset, navigate, navigatePath, createUserData)
-  }
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit(onSubmitLogic)}
+        onSubmit={handleSubmit((data) =>
+          onSubmitLogic(
+            data,
+            img,
+            dispatch,
+            reset,
+            navigate,
+            path,
+            createUserData
+          )
+        )}
       >
         <ContactsContainerStyled>
           <Arrows path={path} />
@@ -42,17 +41,14 @@ export const Contacts = () => {
           <ContactsContentStyled>
             {contactsData.map(({ component, ...props }) => (
               <React.Fragment key={props.name}>
-                {
-                  component({
-                    register,
-                    ...props,
-                    setImg,
-                    img
-                  })
-                }
+                {component({
+                  register,
+                  ...props,
+                  setImg,
+                  img,
+                })}
               </React.Fragment>
-            )
-            )}
+            ))}
           </ContactsContentStyled>
           <DetailsStyled>
             <DetailsIconStyled src={plusIcon} />

@@ -1,18 +1,23 @@
-import { ButtonWrapperStyled } from "../contacts/styled";
+import { ButtonWrapperStyled } from '../contacts/styled';
 import {
   CurrentStepStyled,
   StepsCircleStyled,
   StepsContainerStyled,
   StepsContentStyled,
   StepsTextStyled,
-} from "./styled";
-import { usePersonal } from "../../hooks/useContacts";
-import { steps } from "../../utils/steps-services";
-import { setPath } from "../../store/navigatePathSlice";
+} from './styled';
+import { usePersonal } from '../../hooks/useContacts';
+import { steps } from '../../utils/steps-services';
+import { setPath } from '../../store/navigatePathSlice';
 
 export const Steps = () => {
-  const { dispatch, navigatePath } = usePersonal();
-  const currentStep = steps.find(item => item.path === navigatePath)
+  const { dispatch, navigatePath, navigate } = usePersonal();
+  const currentStep = steps.find((item) => item.path === navigatePath);
+
+  function nav(path: string) {
+    dispatch(setPath(path));
+    navigate(path);
+  }
 
   return (
     <StepsContainerStyled>
@@ -22,7 +27,7 @@ export const Steps = () => {
             <ButtonWrapperStyled>
               <StepsCircleStyled
                 $isCurrent={currentStep?.count === idx}
-                onClick={() => dispatch(setPath(currentPath))}
+                onClick={() => nav(currentPath)}
               />
             </ButtonWrapperStyled>
             <StepsTextStyled>{title}</StepsTextStyled>

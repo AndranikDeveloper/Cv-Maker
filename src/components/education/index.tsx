@@ -10,13 +10,13 @@ import { Steps } from '../steps';
 import { EducationContentStyled, EducationStyled } from './styled';
 
 export const Education = () => {
-  const { register, dispatch, reset, handleSubmit, navigate, navigatePath } = usePersonal();
+  const { register, dispatch, reset, handleSubmit, navigate } = usePersonal();
   const path = '/information';
   return (
     <>
       <form
         onSubmit={handleSubmit((data) =>
-          createUser(dispatch, data, reset, navigate, navigatePath, createUserData)
+          createUser(dispatch, data, reset, navigate, path, createUserData)
         )}
       >
         <EducationStyled>

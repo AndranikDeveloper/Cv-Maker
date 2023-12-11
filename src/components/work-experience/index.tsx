@@ -12,22 +12,16 @@ import {
   WorkTitleStyled,
 } from './styled';
 import { createUserData } from '../../store/userSlice';
+import React from 'react';
 
 export const WorkExperience = () => {
-  const { register, handleSubmit, dispatch, reset, navigate, navigatePath } = usePersonal();
+  const { register, handleSubmit, dispatch, reset, navigate } = usePersonal();
   const path = '/education';
   return (
     <WorkStyled>
       <form
         onSubmit={handleSubmit((data) =>
-          createUser(
-            dispatch,
-            data,
-            reset,
-            navigate,
-            navigatePath,
-            createUserData
-          )
+          createUser(dispatch, data, reset, navigate, path, createUserData)
         )}
       >
         <WorkContainerStyled>
@@ -38,9 +32,11 @@ export const WorkExperience = () => {
           <>
             <WorkTitleStyled>Work Experience</WorkTitleStyled>
             <WorkContentStyled>
-              {workData.map(({ component, ...props }) =>
-                component({ register, ...props })
-              )}
+              {workData.map(({ component, ...props }) => (
+                <React.Fragment key={props.name}>
+                  {component({ register, ...props })}
+                </React.Fragment>
+              ))}
             </WorkContentStyled>
           </>
         </WorkContainerStyled>

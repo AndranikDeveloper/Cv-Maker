@@ -1,11 +1,11 @@
-import { IInput } from "../../types/input-types";
-import { validateEmail } from "../../utils/contacts-services";
+import { IInput } from '../../types/input-types';
+import { validateEmail } from '../../utils/contacts-services';
 import {
   InputStyled,
   InputTopStyled,
   TopRequiredStyled,
   TopTextStyled,
-} from "./styled";
+} from './styled';
 
 export const Input = ({
   name,
@@ -14,9 +14,9 @@ export const Input = ({
   required,
   type,
   title,
-  styles
-}: IInput ) => {
-  const value = validateEmail(name)
+  styles,
+}: IInput) => {
+  const value = validateEmail(name);
 
   return (
     <div style={styles}>
@@ -26,10 +26,10 @@ export const Input = ({
       </InputTopStyled>
       <InputStyled
         style={styles}
-        {...register!(name, { ...value})}
+        {...register!(name, { ...value })}
         name={name}
         placeholder={placeholder}
-        // required={required}
+        required={required}
         type={type}
       />
     </div>

@@ -1,6 +1,7 @@
-import { UseFormReset } from "react-hook-form";
-import { AppDispatch } from "../store/store";
-import { NavigateFunction } from "react-router-dom";
+import { UseFormReset } from 'react-hook-form';
+import { AppDispatch } from '../store/store';
+import { NavigateFunction } from 'react-router-dom';
+import { setPath } from '../store/navigatePathSlice';
 
 export function createUser(
   dispatch: AppDispatch,
@@ -10,10 +11,10 @@ export function createUser(
   path: string,
   store?: (val: Record<string, string>) => void
 ) {
-  console.log(data)
   dispatch(store!(data)!);
   reset();
   if (data) {
+    dispatch(setPath(path));
     navigate(path);
   }
 }

@@ -14,14 +14,14 @@ import { Button } from '../button';
 import React from 'react';
 
 export const Information = () => {
-  const { dispatch, handleSubmit, navigate, reset, register, navigatePath } = usePersonal();
+  const { dispatch, handleSubmit, navigate, reset, register } = usePersonal();
   const path = '/save';
 
   return (
     <InformationStyled>
       <form
         onSubmit={handleSubmit((data) =>
-          createUser(dispatch, data, reset, navigate, navigatePath, createUserData)
+          createUser(dispatch, data, reset, navigate, path, createUserData)
         )}
       >
         <InformationContainerStyled>

@@ -1,5 +1,5 @@
-import { usePersonal } from "../../hooks/useContacts";
-import { IInput } from "../../types/input-types";
+import { IInput } from '../../types/input-types';
+import { setInRegister } from '../../utils/url-services';
 import {
   DeleteImageStyled,
   FileContentStyled,
@@ -9,45 +9,31 @@ import {
   LabelIconStyled,
   LabelStyled,
   LabelTextStyled,
-} from "../contacts/styled";
+} from '../contacts/styled';
 
-export const SelectFile = ({  styles, register, setImg, img }: IInput) => {
-  const { setValue } = usePersonal();
-
-  function setInRegister(e: React.ChangeEvent<HTMLInputElement>) {
-    const fileInput = e.target;
-    if (fileInput.files && fileInput.files.length > 0) {
-      const photo = fileInput.files[0];
-      const objectUrl = URL.createObjectURL(photo);
-      console.log(objectUrl)
-      setValue('photo', objectUrl)
-      setImg!(objectUrl)
-    }
-  }
-
+export const SelectFile = ({ styles, setImg, img }: IInput) => {
   return (
     <div style={styles}>
       <FileContentStyled>
         {img ? (
           <>
-            <ImageWrapperStyled img={img || ""} styles={styles || {}}>
-              <DeleteImageStyled onClick={() => setImg!("")} />
+            <ImageWrapperStyled img={img || ''} styles={styles || {}}>
+              <DeleteImageStyled onClick={() => setImg!('')} />
             </ImageWrapperStyled>
           </>
         ) : (
           <div>
-            <FileLabelStyled htmlFor="photo">
+            <FileLabelStyled htmlFor='photo'>
               <LabelStyled>
                 <LabelIconStyled />
                 <LabelTextStyled>add photo</LabelTextStyled>
               </LabelStyled>
             </FileLabelStyled>
             <FilePickerStyled
-            {...register('photo')}
-              type="file"
-              id="photo"
-              accept="image/png, image/svg, image/jpeg"
-              onChange={setInRegister}
+              type='file'
+              id='photo'
+              accept='image/png, image/svg, image/jpeg'
+              onChange={(e) => setInRegister(e, setImg)}
             />
           </div>
         )}
