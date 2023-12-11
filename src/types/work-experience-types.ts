@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { UseFormRegister } from 'react-hook-form';
 import { CSSProperties } from 'styled-components';
 
@@ -29,7 +28,8 @@ export interface IWorkComponentsProps {
   placeholder?: string;
   name: string;
   styles?: CSSProperties;
-  register?: UseFormRegister<any>;
+  register: UseFormRegister<Record<string, string>>;
+  validate?: (register: UseFormRegister<Record<string, string>>) => void;
 }
 
 export interface IWorkData {

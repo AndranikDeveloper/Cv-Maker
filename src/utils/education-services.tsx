@@ -14,7 +14,6 @@ export const educationData: IEducationData[] = [
     required: false,
     styles: {
       width: "100%",
-      // height: "45px",
         gridArea: "1 / 1 / 2 / 5",
       },
   },
@@ -113,7 +112,6 @@ export const educationData: IEducationData[] = [
     placeholder:
       "Add a description for your course to explain exactly what it entailed to potential employers.",
     styles: {
-      // width: "323px",
       borderRadius: "10px",
       background: "#C4C4C4",
       height: "80px",

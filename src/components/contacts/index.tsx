@@ -12,29 +12,46 @@ import {
 import plusIcon from '../../assets/plus.svg';
 import { Steps } from '../steps';
 import { Arrows } from '../arrows';
-import { createContacts } from '../../store/contactsSlice';
 import { usePersonal } from '../../hooks/useContacts';
+import { createUserData } from '../../store/userSlice';
+import React, { useState } from 'react';
 
 export const Contacts = () => {
-  const { reset, handleSubmit, dispatch, navigate, register } = usePersonal();
+  const { reset, handleSubmit, dispatch, navigate, register, navigatePath } = usePersonal();
+  const [img, setImg] = useState('')
   const path = '/work-experience';
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function onSubmitLogic(data: any) {
+    const newData = {
+      ...data,
+      photo: img
+    }
+    
+    createUser(dispatch, newData, reset, navigate, navigatePath, createUserData)
+  }
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit((data) =>
-          createUser(dispatch, data, reset, navigate, path, createContacts)
-        )}
+        onSubmit={handleSubmit(onSubmitLogic)}
       >
         <ContactsContainerStyled>
           <Arrows path={path} />
           <Steps />
           <ContactsContentStyled>
-            {contactsData.map(({ component, ...props }) =>
-              component({
-                register,
-                ...props,
-              })
+            {contactsData.map(({ component, ...props }) => (
+              <React.Fragment key={props.name}>
+                {
+                  component({
+                    register,
+                    ...props,
+                    setImg,
+                    img
+                  })
+                }
+              </React.Fragment>
+            )
             )}
           </ContactsContentStyled>
           <DetailsStyled>

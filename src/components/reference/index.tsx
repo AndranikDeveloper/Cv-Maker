@@ -7,6 +7,7 @@ import {
   ReferenceTextAreaStyled,
 } from './styled';
 import { referenceData } from '../../utils/reference-services';
+import React from 'react';
 
 export const Reference = ({
   register,
@@ -17,9 +18,11 @@ export const Reference = ({
     <ReferenceStyled>
       <ReferenceContentStyled>
         <ReferenceTopStyled>
-          {referenceData.map(({ component, ...props }) =>
-            component({ register, ...props })
-          )}
+          {referenceData.map(({ component, ...props }) => (
+            <React.Fragment key={props.name}>
+              {component({ register, ...props })}
+            </React.Fragment>
+          ))}
         </ReferenceTopStyled>
 
         <ReferenceBottomStyled>

@@ -1,5 +1,5 @@
-import { CSSProperties } from 'styled-components';
-import { IInput } from './input-types';
+import { CSSProperties } from "styled-components";
+import { IInput } from "./input-types";
 
 export interface IContacts {
   firstName: string;

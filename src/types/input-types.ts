@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { CSSProperties } from 'styled-components';
 
@@ -10,6 +11,8 @@ export interface IInput {
   register: UseFormRegister<Record<string, string>>;
   styles?: CSSProperties;
   validate?: (register: UseFormRegister<Record<string, string>>) => void;
+  setImg?: Dispatch<SetStateAction<string>>
+  img?: string
 }
 
 export interface IContactsInfo {

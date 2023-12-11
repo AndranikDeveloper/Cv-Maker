@@ -11,16 +11,27 @@ import {
   LabelTextStyled,
 } from "../contacts/styled";
 
-export const SelectFile = ({ register, styles }: IInput) => {
-  const { img, setImg } = usePersonal();
-  console.log(img);
+export const SelectFile = ({  styles, register, setImg, img }: IInput) => {
+  const { setValue } = usePersonal();
+
+  function setInRegister(e: React.ChangeEvent<HTMLInputElement>) {
+    const fileInput = e.target;
+    if (fileInput.files && fileInput.files.length > 0) {
+      const photo = fileInput.files[0];
+      const objectUrl = URL.createObjectURL(photo);
+      console.log(objectUrl)
+      setValue('photo', objectUrl)
+      setImg!(objectUrl)
+    }
+  }
+
   return (
     <div style={styles}>
       <FileContentStyled>
         {img ? (
           <>
-            <ImageWrapperStyled img={img || ''} styles={styles || {}}>
-              <DeleteImageStyled onClick={() => setImg('')}/>
+            <ImageWrapperStyled img={img || ""} styles={styles || {}}>
+              <DeleteImageStyled onClick={() => setImg!("")} />
             </ImageWrapperStyled>
           </>
         ) : (
@@ -32,11 +43,11 @@ export const SelectFile = ({ register, styles }: IInput) => {
               </LabelStyled>
             </FileLabelStyled>
             <FilePickerStyled
+            {...register('photo')}
               type="file"
               id="photo"
-              {...register("photo")}
               accept="image/png, image/svg, image/jpeg"
-              onChange={(e) => setImg(URL.createObjectURL(e.target.files![0]))}
+              onChange={setInRegister}
             />
           </div>
         )}

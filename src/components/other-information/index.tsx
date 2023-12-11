@@ -8,19 +8,20 @@ import { Arrows } from '../arrows';
 import { Steps } from '../steps';
 import { usePersonal } from '../../hooks/useContacts';
 import { createUser } from '../../utils/create-user-services';
-import { createInformation } from '../../store/informationSlice';
+import { createUserData } from '../../store/userSlice';
 import { ButtonPositionStyled } from '../contacts/styled';
 import { Button } from '../button';
+import React from 'react';
 
 export const Information = () => {
-  const { dispatch, handleSubmit, navigate, reset, register } = usePersonal();
+  const { dispatch, handleSubmit, navigate, reset, register, navigatePath } = usePersonal();
   const path = '/save';
 
   return (
     <InformationStyled>
       <form
         onSubmit={handleSubmit((data) =>
-          createUser(dispatch, data, reset, navigate, path, createInformation)
+          createUser(dispatch, data, reset, navigate, navigatePath, createUserData)
         )}
       >
         <InformationContainerStyled>
@@ -29,9 +30,11 @@ export const Information = () => {
             <Steps />
           </div>
           <InformationContentStyled>
-            {additionalInfo.map(({ component, ...props }) =>
-              component({ register, ...props })
-            )}
+            {additionalInfo.map(({ component, ...props }) => (
+              <React.Fragment key={props.name}>
+                {component({ register, ...props })}
+              </React.Fragment>
+            ))}
             <ButtonPositionStyled>
               <Button type='submit' />
             </ButtonPositionStyled>

@@ -19,20 +19,8 @@ export const referenceData: ReferenceData[] = [
   },
   {
     title: 'Email Address',
-    name: 'email',
+    name: 'referenceEmail',
     component: (props: ReferenceProps) => <ReferenceInput {...props} />,
   },
-  // {
-  //   title: 'Description',
-  //   placeholder:
-  //     'Add a few notes about your reference. Where you worked, how do you know this reference etc. ',
-  //   name: 'description',
-  //   component: (props: ReferenceProps) => <TextArea {...props} />,
-  //   styles: {
-  //     borderRadius: '10px',
-  //     background: '#C4C4C4',
-  //     height: '73.084px',
-  //     resize: 'none',
-  //   },
-  // },
+
 ];

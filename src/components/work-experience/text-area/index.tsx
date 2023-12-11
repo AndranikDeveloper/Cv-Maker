@@ -6,6 +6,7 @@ export const TextArea = ({
   styles,
   placeholder,
   register,
+  
 }: IWorkComponentsProps) => {
   return (
     <>

@@ -26,10 +26,10 @@ export const Input = ({
       </InputTopStyled>
       <InputStyled
         style={styles}
-        {...register!(name, { required: required, ...value})}
+        {...register!(name, { ...value})}
         name={name}
         placeholder={placeholder}
-        required={required}
+        // required={required}
         type={type}
       />
     </div>

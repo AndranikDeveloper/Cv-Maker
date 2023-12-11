@@ -111,7 +111,7 @@ export const contactsData: DataType[] = [
     styles: {
       width: '194px',
       gridArea: ' 6 / 2 / 7 / 4',
-      marginLeft: '20px',
+      marginLeft: '12px'
     },
   },
 ];

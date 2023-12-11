@@ -11,10 +11,10 @@ import {
   WorkStyled,
   WorkTitleStyled,
 } from './styled';
-import { createWorkExperience } from '../../store/workExperienceSlice';
+import { createUserData } from '../../store/userSlice';
 
 export const WorkExperience = () => {
-  const { register, handleSubmit, dispatch, reset, navigate } = usePersonal();
+  const { register, handleSubmit, dispatch, reset, navigate, navigatePath } = usePersonal();
   const path = '/education';
   return (
     <WorkStyled>
@@ -25,14 +25,14 @@ export const WorkExperience = () => {
             data,
             reset,
             navigate,
-            path,
-            createWorkExperience
+            navigatePath,
+            createUserData
           )
         )}
       >
         <WorkContainerStyled>
           <>
-            <Arrows path='/education' />
+            <Arrows path={path} />
             <Steps />
           </>
           <>

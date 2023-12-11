@@ -1,72 +1,28 @@
-import { useState } from 'react';
-import { createUser } from '../../utils/create-user-services';
-import { ButtonWrapperStyled } from '../contacts/styled';
+import { ButtonWrapperStyled } from "../contacts/styled";
 import {
   CurrentStepStyled,
   StepsCircleStyled,
   StepsContainerStyled,
   StepsContentStyled,
   StepsTextStyled,
-} from './styled';
-import { useAppSelector } from '../../hooks/store-hooks';
-import { Contacts } from '../contacts';
-import { WorkExperience } from '../work-experience';
-import { Education } from '../education';
-import { Information } from '../other-information';
-import { SaveCv } from '../../save-cv';
-import { usePersonal } from '../../hooks/useContacts';
+} from "./styled";
+import { usePersonal } from "../../hooks/useContacts";
+import { steps } from "../../utils/steps-services";
+import { setPath } from "../../store/navigatePathSlice";
 
 export const Steps = () => {
-  const [path, setPath] = useState('');
-  const step = useAppSelector((state) => state.stepsSlice.step);
-  const { handleSubmit, dispatch, reset, navigate } = usePersonal();
-
-  const steps = [
-    {
-      title: `Contact Information`,
-      component: <Contacts />,
-      count: 0,
-      path: '/contacts',
-    },
-    {
-      title: `Work Experience`,
-      component: <WorkExperience />,
-      count: 1,
-      path: '/work-experience',
-    },
-    {
-      title: `Education Details`,
-      component: <Education />,
-      count: 2,
-      path: '/contacts',
-    },
-    {
-      title: `Other Information`,
-      component: <Information />,
-      count: 3,
-      path: '/information',
-    },
-    {
-      title: `Save / Download`,
-      component: <SaveCv />,
-      count: 4,
-      path: '/work-experience',
-    },
-  ];
+  const { dispatch, navigatePath } = usePersonal();
+  const currentStep = steps.find(item => item.path === navigatePath)
 
   return (
     <StepsContainerStyled>
       <StepsContentStyled>
-        {steps.map(({ title, count, path: currentPath }, idx) => (
+        {steps.map(({ title, path: currentPath }, idx) => (
           <CurrentStepStyled key={idx}>
-            <ButtonWrapperStyled
-              onSubmit={handleSubmit((data) =>
-                createUser(dispatch, data, reset, navigate, path)
-              )}
-            >
+            <ButtonWrapperStyled>
               <StepsCircleStyled
-                $isCurrent={count === step}
-                onClick={() => setPath(currentPath)}
+                $isCurrent={currentStep?.count === idx}
+                onClick={() => dispatch(setPath(currentPath))}
               />
             </ButtonWrapperStyled>
             <StepsTextStyled>{title}</StepsTextStyled>
