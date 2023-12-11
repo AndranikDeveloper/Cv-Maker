@@ -1,10 +1,7 @@
-import { UseFormReset } from 'react-hook-form';
-import { AppDispatch } from '../store/store';
 import { DataType } from '../types/contacts-types';
-import {  IInput } from '../types/input-types';
+import { IInput } from '../types/input-types';
 import { Input } from '../components/contacts-input/index';
 import { SelectFile } from '../components/select-contact-img';
-import { NavigateFunction } from 'react-router-dom';
 
 export function validateEmail(name: string) {
   const validation =
@@ -118,18 +115,3 @@ export const contactsData: DataType[] = [
     },
   },
 ];
-
-export function createUser(
-  dispatch: AppDispatch,
-  data: Record<string, string>,
-  reset: UseFormReset<Record<string, string>>,
-  navigate: NavigateFunction,
-  path: string,
-  store?: (val: Record<string, string>) => void
-) {
-  console.log('asdas');
-  
-  dispatch(store!(data)!);
-  reset();
-  navigate(path);
-}

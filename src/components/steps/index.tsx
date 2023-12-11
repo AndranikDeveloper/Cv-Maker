@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createUser } from '../../utils/contacts-services';
+import { createUser } from '../../utils/create-user-services';
 import { ButtonWrapperStyled } from '../contacts/styled';
 import {
   CurrentStepStyled,

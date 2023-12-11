@@ -1,4 +1,5 @@
-import { contactsData, createUser } from '../../utils/contacts-services';
+import { contactsData } from '../../utils/contacts-services';
+import { createUser } from '../../utils/create-user-services';
 import { Button } from '../button';
 import {
   ContactsContainerStyled,
@@ -17,8 +18,6 @@ import { usePersonal } from '../../hooks/useContacts';
 export const Contacts = () => {
   const { reset, handleSubmit, dispatch, navigate, register } = usePersonal();
   const path = '/work-experience';
-  console.log('asdas');
-  
 
   return (
     <div>

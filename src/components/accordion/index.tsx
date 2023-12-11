@@ -1,5 +1,5 @@
-import { Language } from "../language";
-import { Reference } from "../reference";
+import { Language } from '../language';
+import { Reference } from '../reference';
 import {
   AccordionItemsStyled,
   AccordionStyled,
@@ -10,23 +10,28 @@ import {
   ReferenceItemStyled,
   LanguageIconStyled,
   ReferenceIconStyled,
-} from "./styled";
-import arrowIcon from "../../assets/icons/arrow-icons.svg";
-import { useState } from "react";
-import { UseFormRegister } from "react-hook-form";
+} from './styled';
+import arrowIcon from '../../assets/icons/arrow-icons.svg';
+import { useState } from 'react';
+import { UseFormRegister } from 'react-hook-form';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Accordion = ({ register }: {register: UseFormRegister<any>}) => {
+export const Accordion = ({
+  register,
+}: {
+  register: UseFormRegister<Record<string, string>>;
+}) => {
   const [clickedLanguage, setClickedLanguage] = useState(false);
   const [clickedReference, setClickedReference] = useState(false);
-  
 
   return (
     <AccordionStyled>
       <AccordionItemsStyled>
         <LanguageItemStyled onClick={() => setClickedLanguage((prev) => !prev)}>
           <SectionNameStyled>Languages</SectionNameStyled>
-          <LanguageIconStyled src={arrowIcon} $clickedLanguage={clickedLanguage}/>
+          <LanguageIconStyled
+            src={arrowIcon}
+            $clickedLanguage={clickedLanguage}
+          />
         </LanguageItemStyled>
         {clickedLanguage && (
           <LanguageInfoStyled $clickedLanguage={clickedLanguage}>
@@ -37,13 +42,16 @@ export const Accordion = ({ register }: {register: UseFormRegister<any>}) => {
           onClick={() => setClickedReference((prev) => !prev)}
         >
           <SectionNameStyled>Reference</SectionNameStyled>
-          <ReferenceIconStyled src={arrowIcon} $clickedReference={clickedReference}/>
+          <ReferenceIconStyled
+            src={arrowIcon}
+            $clickedReference={clickedReference}
+          />
         </ReferenceItemStyled>
         {clickedReference && (
           <ReferenceInfoStyled>
             <Reference register={register} />
           </ReferenceInfoStyled>
-        )} 
+        )}
       </AccordionItemsStyled>
     </AccordionStyled>
   );

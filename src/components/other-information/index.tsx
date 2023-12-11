@@ -1,20 +1,20 @@
-import { additionalInfo } from "../../utils/information-services";
+import { additionalInfo } from '../../utils/information-services';
 import {
   InformationContainerStyled,
   InformationContentStyled,
   InformationStyled,
-} from "./styled";
-import { Arrows } from "../arrows";
-import { Steps } from "../steps";
-import { usePersonal } from "../../hooks/useContacts";
-import { createUser } from "../../utils/contacts-services";
-import { createInformation } from "../../store/informationSlice";
-import { ButtonPositionStyled } from "../contacts/styled";
-import { Button } from "../button";
+} from './styled';
+import { Arrows } from '../arrows';
+import { Steps } from '../steps';
+import { usePersonal } from '../../hooks/useContacts';
+import { createUser } from '../../utils/create-user-services';
+import { createInformation } from '../../store/informationSlice';
+import { ButtonPositionStyled } from '../contacts/styled';
+import { Button } from '../button';
 
 export const Information = () => {
   const { dispatch, handleSubmit, navigate, reset, register } = usePersonal();
-  const path = "/save";
+  const path = '/save';
 
   return (
     <InformationStyled>
@@ -33,7 +33,7 @@ export const Information = () => {
               component({ register, ...props })
             )}
             <ButtonPositionStyled>
-              <Button type="submit" />
+              <Button type='submit' />
             </ButtonPositionStyled>
           </InformationContentStyled>
         </InformationContainerStyled>

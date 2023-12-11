@@ -1,7 +1,7 @@
-import { CSSProperties, styled } from "styled-components";
-import { FaCamera } from "react-icons/fa6";
-import { RxCross1 } from "react-icons/rx";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { CSSProperties, styled } from 'styled-components';
+import { FaCamera } from 'react-icons/fa6';
+import { RxCross1 } from 'react-icons/rx';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 export const ContactsStyled = styled.div``;
 export const ContactsContentStyled = styled.div`
@@ -114,8 +114,8 @@ export const DetailsStyled = styled.div`
 
 export const DetailsTextStyled = styled.span`
   color: #000;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -132,14 +132,14 @@ export const ButtonPositionStyled = styled.div`
 `;
 
 interface Props {
-  img: string
-  styles: CSSProperties
+  img: string;
+  styles: CSSProperties;
 }
 
 export const ImageWrapperStyled = styled.div<Props>`
   background-image: ${({ img }) => `url(${img})`};
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  ${({styles}) => styles && {...styles}}
-`
+  background-size: contain;
+  ${({ styles }) => styles && { ...styles }}
+`;

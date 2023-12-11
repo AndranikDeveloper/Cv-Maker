@@ -28,7 +28,7 @@ export interface IWorkComponentsProps {
   title: string;
   placeholder?: string;
   name: string;
-  styles: CSSProperties;
+  styles?: CSSProperties;
   register?: UseFormRegister<any>;
 }
 

@@ -1,17 +1,13 @@
-import { ReferenceInputStyled } from "../styled";
+import { ReferenceProps } from '../../../types/reference-types';
+import { InputStyled, InputTextStyled, ReferenceInputStyled } from '../styled';
 
-interface InputProps {
-    title: string
-}
-
-
-export const ReferenceInput = ({title}: InputProps) => {
-    console.log(title);
-    
+export const ReferenceInput = ({ register, title, name }: ReferenceProps) => {
   return (
     <>
-        <div>{title}</div>
-        <ReferenceInputStyled />
+      <InputStyled>
+        <InputTextStyled>{title}</InputTextStyled>
+        <ReferenceInputStyled {...register(name)} />
+      </InputStyled>
     </>
-  )
-}
+  );
+};

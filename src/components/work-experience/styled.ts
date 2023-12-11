@@ -4,6 +4,11 @@ export const WorkStyled = styled.div``;
 export const WorkContainerStyled = styled.div`
   padding: 0px 25px;
 `;
+export const WorkTitleStyled = styled.h3`
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+`;
 export const WorkContentStyled = styled.div`
   margin-top: 20px;
   display: grid;
