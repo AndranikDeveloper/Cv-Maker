@@ -29,7 +29,7 @@ export const Reference = ({
           <div>Description</div>
           <ReferenceTextAreaStyled
             placeholder='Add a few notes about your reference. Where you worked, how do you know this reference etc. '
-            {...register('description')}
+            {...register('descriptionReference')}
           />
         </ReferenceBottomStyled>
       </ReferenceContentStyled>

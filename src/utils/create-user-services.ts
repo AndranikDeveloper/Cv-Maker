@@ -12,7 +12,6 @@ export function createUser(
   store?: (val: Record<string, string>) => void
 ) {
   dispatch(store!(data)!);
-  reset();
   if (data) {
     dispatch(setPath(path));
     navigate(path);

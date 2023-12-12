@@ -9,7 +9,7 @@ import {
 } from '../contacts/styled';
 
 interface ArrowsProps {
-  path: string;
+  path?: string;
 }
 
 export const Arrows = ({ path }: ArrowsProps) => {

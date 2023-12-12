@@ -13,4 +13,5 @@ export interface ReferenceData {
   title: string;
   placeholder?: string;
   styles?: React.CSSProperties;
+  descriptionName?: string
 }

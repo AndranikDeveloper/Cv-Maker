@@ -1,5 +1,5 @@
 export interface IUserData {
-  [value: string]: string | Blob | MediaSource;
+  [value: string]: string;
 }
 
 export interface IUser {

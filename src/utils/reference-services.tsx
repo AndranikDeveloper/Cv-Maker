@@ -21,6 +21,7 @@ export const referenceData: ReferenceData[] = [
     title: 'Email Address',
     name: 'referenceEmail',
     component: (props: ReferenceProps) => <ReferenceInput {...props} />,
+    descriptionName: 'descriptionReference'
   },
 
 ];
