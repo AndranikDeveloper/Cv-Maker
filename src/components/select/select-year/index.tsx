@@ -6,10 +6,15 @@ export const SelectYear = ({
   register,
   name,
   styles,
+  defaultValue,
 }: IWorkComponentsProps) => {
   return (
     <div>
-      <SelectTagStyled style={styles} {...register(name)}>
+      <SelectTagStyled
+        style={styles}
+        {...register(name)}
+        defaultValue={defaultValue}
+      >
         {years.map((year) => (
           <SelectOptionStyled key={year}>{year.toString()}</SelectOptionStyled>
         ))}

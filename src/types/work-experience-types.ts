@@ -30,6 +30,7 @@ export interface IWorkComponentsProps {
   styles?: CSSProperties;
   register: UseFormRegister<Record<string, string>>;
   validate?: (register: UseFormRegister<Record<string, string>>) => void;
+  defaultValue?: string;
 }
 
 export interface IWorkData {
@@ -40,4 +41,5 @@ export interface IWorkData {
   name: string;
   styles: CSSProperties;
   component: (props: IWorkComponentsProps) => React.ReactNode;
+  defaultValue?: string;
 }

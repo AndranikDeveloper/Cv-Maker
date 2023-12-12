@@ -1,5 +1,5 @@
-import { usePersonal } from "../../../hooks/useContacts";
-import { useUserData } from "../../../hooks/useUser";
+import { usePersonal } from '../../../hooks/useContacts';
+import { useUserData } from '../../../hooks/useUser';
 import {
   CvContentStyled,
   CvLeftSideStyled,
@@ -13,51 +13,43 @@ import {
   RightContentStyled,
   RightTextStyled,
   UnderLineStyled,
-} from "../cv-contacts/styled";
+} from '../cv-contacts/styled';
 
 export const CvContacts = () => {
   const { user } = usePersonal();
   const { description, personalData } = useUserData(user);
+  console.log(user);
 
   return (
     <CvContentStyled>
-      <CvLeftSideStyled>
-        <DescriptionTitleStyled>Work Description</DescriptionTitleStyled>
-        <DescriptionStyled>{description}</DescriptionStyled>
-        <UnderLineStyled />
-      </CvLeftSideStyled>
+      {description && description !== '' && (
+        <CvLeftSideStyled>
+          <DescriptionTitleStyled>Work Description</DescriptionTitleStyled>
+          <DescriptionStyled>{description}</DescriptionStyled>
+          <UnderLineStyled />
+        </CvLeftSideStyled>
+      )}
       <CvRightSideStyled>
         <RightContentStyled>
           <EmailIconStyled />
           <RightTextStyled>{personalData!.email}</RightTextStyled>
         </RightContentStyled>
-        {personalData!.phoneNumber ? (
+        {personalData!.phoneNumber && (
           <RightContentStyled>
             <PhoneIconStyled />
             <RightTextStyled>{personalData!.phoneNumber}</RightTextStyled>
           </RightContentStyled>
-        ) : (
-          <RightContentStyled>
-            <PhoneIconStyled />
-            <RightTextStyled>Empty Number</RightTextStyled>
-          </RightContentStyled>
         )}
-        {personalData!.location ? (
-          <RightContentStyled>
-            <PhoneIconStyled />
-            <RightTextStyled>{personalData!.city}</RightTextStyled>
-          </RightContentStyled>
-        ) : (
+        {personalData!.location && (
           <RightContentStyled>
             <LocationIconStyled />
-            <RightTextStyled>Empty Location</RightTextStyled>
+            <RightTextStyled>{personalData!.city}</RightTextStyled>
           </RightContentStyled>
         )}
         <LineBlockStyled>
           <UnderLineStyled />
         </LineBlockStyled>
       </CvRightSideStyled>
-     
     </CvContentStyled>
   );
 };
